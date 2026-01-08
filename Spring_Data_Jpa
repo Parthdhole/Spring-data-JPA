@@ -1,1 +1,5 @@
                                                                            Spring Data JPA
+                                               it is a framework that simplifies database access in Spring Boot applications 
+                                      it provide a abstarct layer over a java Persistence  api and enable the comuunication between application and database by using 
+                                     object relational mapping 
+                          
