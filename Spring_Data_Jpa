@@ -26,4 +26,15 @@
                                       Spring Data → Framework (Spring ke andar data access easy banane ke liye)
                                       pring Data JPA → Abstraction over JPA
                                      ->JPA ke upar ek extra layer
+
+
+-- APPROACH 3:RANK(),ROW_NUMBER() DENSE_RANK()
+select WORKER_ID,FIRST_NAME,SALARY,DEPARTMENT,RANK() over(order by SALARY DESC) AS RNK from Worker;
+select WORKER_ID,FIRST_NAME,SALARY,DEPARTMENT,dense_rank() over(order by SALARY DESC) AS RNK from Worker;
+
+SELECT SALARY
+FROM (
+    SELECT SALARY, DENSE_RANK() OVER (ORDER BY SALARY DESC) AS rnk
+    FROM Worker
+)t
                                      ->Hibernate internally use karta hai
