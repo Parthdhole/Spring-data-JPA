@@ -28,6 +28,32 @@
                                      ->JPA ke upar ek extra layer
 
 
+
+
+-- APPROACH 2: Subquery
+-- 2td higest
+select max(SALARY) from Worker where SALARY<(select max(SALARY) from Worker);
+-- 3td higest
+select max(SALARY) from Worker 
+where SALARY<(
+select max(SALARY)
+ from Worker
+ where SALARY<(select max(SALARY )from Worker)
+);
+-- 4td higest
+select max(SALARY) from Worker 
+where SALARY<(
+select max(SALARY)
+ from Worker
+ where SALARY<(
+ select max(SALARY )
+ from Worker
+ where SALARY<(select max(SALARY) from Worker)
+ )
+);
+
+
+
 -- APPROACH 3:RANK(),ROW_NUMBER() DENSE_RANK()
 select WORKER_ID,FIRST_NAME,SALARY,DEPARTMENT,RANK() over(order by SALARY DESC) AS RNK from Worker;
 select WORKER_ID,FIRST_NAME,SALARY,DEPARTMENT,dense_rank() over(order by SALARY DESC) AS RNK from Worker;
